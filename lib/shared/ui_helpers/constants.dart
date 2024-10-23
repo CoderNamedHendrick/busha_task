@@ -3,6 +3,7 @@ final class Constants {
 
   static const largeVerticalGutter = 24.0;
   static const verticalGutter = 16.0;
+  static const verticalMargin = 20.0;
   static const smallVerticalGutter = 8.0;
 
   static const smallHorizontalGutter = 8.0;
@@ -10,4 +11,6 @@ final class Constants {
   static const horizontalGutter = 16.0;
 
   static const largeHorizontalGutter = 24.0;
+
+  static const shortAnimationDuration = Duration(milliseconds: 300);
 }

@@ -44,18 +44,33 @@ class _BushaAppState extends State<BushaApp> {
               color: Colors.black.withOpacity(0.32),
             ).inter,
           ),
+          appBarTheme: AppBarTheme(
+            backgroundColor: Colors.white,
+            elevation: 0,
+            scrolledUnderElevation: 0,
+            iconTheme: const IconThemeData(color: Colors.black),
+            titleTextStyle: const TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w700,
+              color: Colors.black,
+            ).inter,
+          ),
           colorScheme: ColorScheme.fromSeed(
             seedColor: const Color(0xff12a633),
             surface: Colors.white,
             onSurface: Colors.black,
             onSurfaceVariant: const Color(0xff9ba0a5),
+            onInverseSurface: const Color(0xfff2f3f7),
             surfaceTint: const Color(0xffb7b7b7),
             error: const Color(0xffc00f00),
           ),
           textTheme: GoogleFonts.interTextTheme().copyWith(
+            displayMedium: const TextStyle(fontSize: 32),
             titleMedium: const TextStyle(fontSize: 20),
+            titleSmall: const TextStyle(fontSize: 18),
             bodyLarge: const TextStyle(fontSize: 16),
             bodyMedium: const TextStyle(fontSize: 14),
+            bodySmall: const TextStyle(fontSize: 12),
           ),
           filledButtonTheme: FilledButtonThemeData(
             style: FilledButton.styleFrom(
@@ -67,6 +82,9 @@ class _BushaAppState extends State<BushaApp> {
                 borderRadius: BorderRadius.all(Radius.circular(8)),
               ),
             ),
+          ),
+          progressIndicatorTheme: const ProgressIndicatorThemeData(
+            color: Color(0xff12a633),
           ),
           useMaterial3: true,
         ),

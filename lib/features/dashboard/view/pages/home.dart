@@ -71,6 +71,7 @@ class _DashboardPageState extends State<_View> {
             fontSize: 12, color: Theme.of(context).colorScheme.onSurface),
         unselectedLabelStyle: TextStyle(
             fontSize: 12, color: Theme.of(context).colorScheme.surfaceTint),
+        borderColor: Theme.of(context).colorScheme.onInverseSurface,
         items: [
           BushaBottomNavItem(
             label: 'Explore',

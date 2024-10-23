@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../shared/shared.dart';
+import '../widgets/widgets.dart';
 
 class ExploreHomePage extends StatefulWidget {
   const ExploreHomePage({super.key});
@@ -36,6 +37,34 @@ class _ExploreHomePageState extends State<ExploreHomePage> {
           ),
         ],
       ),
+      body: ListView(
+        physics: const BouncingScrollPhysics(),
+        children: [
+          Section(
+            border: Border(
+              bottom: BorderSide(
+                  color: Theme.of(context).colorScheme.onInverseSurface),
+            ),
+            child: const BalanceInfo(balance: 5000),
+          ),
+          Section(
+            border: Border(
+              bottom: BorderSide(
+                  color: Theme.of(context).colorScheme.onInverseSurface),
+            ),
+            child: const MyAssets(),
+          ),
+          Section(
+            border: Border(
+              bottom: BorderSide(
+                  color: Theme.of(context).colorScheme.onInverseSurface),
+            ),
+            padding: EdgeInsets.zero,
+            child: const TodayTopMovers(),
+          ),
+          const Section(child: TrendingNews()),
+        ],
+      ),
     );
   }
 }
@@ -58,10 +87,11 @@ class _BellWithAlert extends StatelessWidget {
               height: 7,
               width: 7,
               decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Theme.of(context).colorScheme.error,
-                  border:
-                      Border.all(color: Theme.of(context).colorScheme.surface)),
+                shape: BoxShape.circle,
+                color: Theme.of(context).colorScheme.error,
+                border:
+                    Border.all(color: Theme.of(context).colorScheme.surface),
+              ),
             ),
           ),
         ],
