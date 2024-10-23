@@ -34,26 +34,32 @@ class _BushaAppState extends State<BushaApp> {
             ),
             contentPadding: const EdgeInsets.all(12),
             fillColor: const Color(0xffefefef),
-            labelStyle: const TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w400,
-              color: Color(0xff5a5a5a),
-            ).inter,
-            hintStyle: TextStyle(
-              fontSize: 16,
-              color: Colors.black.withOpacity(0.32),
-            ).inter,
+            labelStyle: GoogleFonts.inter(
+              textStyle: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w400,
+                color: Color(0xff5a5a5a),
+              ),
+            ),
+            hintStyle: GoogleFonts.inter(
+              textStyle: TextStyle(
+                fontSize: 16,
+                color: Colors.black.withOpacity(0.32),
+              ),
+            ),
           ),
           appBarTheme: AppBarTheme(
             backgroundColor: Colors.white,
             elevation: 0,
             scrolledUnderElevation: 0,
             iconTheme: const IconThemeData(color: Colors.black),
-            titleTextStyle: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w700,
-              color: Colors.black,
-            ).inter,
+            titleTextStyle: GoogleFonts.inter(
+              textStyle: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+                color: Colors.black,
+              ),
+            ),
           ),
           colorScheme: ColorScheme.fromSeed(
             seedColor: const Color(0xff12a633),

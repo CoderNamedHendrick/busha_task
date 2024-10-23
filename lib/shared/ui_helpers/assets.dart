@@ -8,6 +8,7 @@ class SvgAssets {
   static const bitcoinCoin = '${_baseUri}bitcoin_coin.svg';
   static const ethereumCoin = '${_baseUri}ethereum_coin.svg';
   static const exploreFilled = '${_baseUri}explore_filled.svg';
+  static const externalLink = '${_baseUri}external_link.svg';
   static const peerChain = '${_baseUri}peer_chain.svg';
   static const percentOutline = '${_baseUri}percent_outline.svg';
   static const polygonCoin = '${_baseUri}polygon_coin.svg';
@@ -24,6 +25,7 @@ class SvgAssets {
       bitcoinCoin,
       ethereumCoin,
       exploreFilled,
+      externalLink,
       peerChain,
       percentOutline,
       polygonCoin,

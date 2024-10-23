@@ -7,4 +7,6 @@ mixin class IntlFormats {
   NumberFormat get decimalOnlyFormat => NumberFormat('.00');
 
   NumberFormat get percentageFormat => NumberFormat('.00');
+
+  DateFormat get transactionDateFormat => DateFormat('yyyy-MM-dd • hh:mm');
 }

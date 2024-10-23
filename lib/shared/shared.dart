@@ -1,4 +1,5 @@
 //GENERATED BARREL FILE
+export './network/network.dart';
 export './state/ui_state.dart';
 export './ui_helpers/ui_helpers.dart';
 export './utils/option.dart';

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../routing/routing.dart';
 import '../../../../shared/shared.dart';
 import 'widgets.dart';
 
@@ -43,7 +44,9 @@ class MyAssets extends StatelessWidget with IntlFormats {
           icon: const SvgIcon(SvgAssets.bitcoinCoin, fit: BoxFit.fill),
           amount: Text(currencyFormat().format(24500000)),
           priceMovement: const PriceMovement.up(percentage: 1.76),
-          onTap: () {},
+          onTap: () {
+            context.pushNamed('/transactions', arguments: 'BTC');
+          },
         ),
         Constants.verticalGutter.verticalSpace,
         AssetTile(
@@ -64,7 +67,9 @@ class MyAssets extends StatelessWidget with IntlFormats {
           ),
           amount: Text(currencyFormat().format(4500)),
           priceMovement: const PriceMovement.up(percentage: 9.06),
-          onTap: () {},
+          onTap: () {
+            context.pushNamed('/transactions', arguments: 'XTZ');
+          },
         ),
       ],
     );
