@@ -1,11 +1,23 @@
-import 'package:busha_interview/shared/shared.dart';
+import 'shared/shared.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'routing/routing.dart';
 
-class BushaApp extends StatelessWidget {
+class BushaApp extends StatefulWidget {
   const BushaApp({super.key});
+
+  @override
+  State<BushaApp> createState() => _BushaAppState();
+}
+
+class _BushaAppState extends State<BushaApp> {
+  @override
+  void initState() {
+    super.initState();
+
+    Future.microtask(SvgAssets.preloadSvgs);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,9 +51,25 @@ class BushaApp extends StatelessWidget {
             onSurfaceVariant: Color(0xff9ba0a5),
             error: Color(0xffc00f00),
           ),
-          textTheme: GoogleFonts.interTextTheme(),
+          textTheme: GoogleFonts.interTextTheme().copyWith(
+            titleMedium: TextStyle(fontSize: 20),
+            bodyLarge: TextStyle(fontSize: 16),
+            bodyMedium: TextStyle(fontSize: 14),
+          ),
+          filledButtonTheme: FilledButtonThemeData(
+            style: FilledButton.styleFrom(
+              foregroundColor: Colors.white,
+              backgroundColor: Color(0xff12a633),
+              minimumSize: Size(double.infinity, 48),
+              textStyle: TextStyle(fontSize: 16).semi,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(8)),
+              ),
+            ),
+          ),
           useMaterial3: true,
         ),
+        navigatorKey: BushaRouter.routeKey,
         initialRoute: BushaRouter.initialRoute,
         onGenerateRoute: BushaRouter.instance.routeGenerator,
       ),

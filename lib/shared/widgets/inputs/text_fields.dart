@@ -5,7 +5,7 @@ class EmailTextFormField extends BushaTextFormField {
   const EmailTextFormField({
     super.key,
     super.title = 'Email Address',
-    super.hintText = 'Enter your email address',
+    super.hintText = 'johndoe@abce.com',
     super.hintStyle,
     super.validator,
     super.onChanged,
@@ -14,6 +14,12 @@ class EmailTextFormField extends BushaTextFormField {
     super.focusNode,
     super.textInputAction,
     super.readOnly = false,
+    autocorrect = false,
+    autofillHints = const [
+      AutofillHints.email,
+      AutofillHints.newUsername,
+      AutofillHints.username,
+    ],
     super.keyboardType = TextInputType.emailAddress,
   });
 }
@@ -73,6 +79,8 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
       obscureText: obscurePassword,
       keyboardType: TextInputType.visiblePassword,
       suffixConstraints: BoxConstraints(maxWidth: 80),
+      autocorrect: false,
+      autofillHints: [AutofillHints.password, AutofillHints.newPassword],
       suffix: InkWell(
         borderRadius: BorderRadius.all(Radius.circular(12)),
         onTap: _togglePasswordVisibility,

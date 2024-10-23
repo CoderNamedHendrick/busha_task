@@ -1,52 +1,41 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../routing/routing.dart';
 import '../../../../shared/shared.dart';
-import 'package:flutter/material.dart';
+import '../../application/notifiers.dart';
+import 'login.dart';
 
-import '../../../dashboard/dashboard.dart';
-import '../../application/notifiers.dart' hide signupViewModelProvider;
+class SignUpPage extends ConsumerWidget {
+  static const route = '/auth';
 
-class LoginPage extends ConsumerStatefulWidget {
-  static const route = '/auth/login';
-
-  const LoginPage({super.key});
+  const SignUpPage({super.key});
 
   @override
-  ConsumerState<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends ConsumerState<LoginPage> {
-  @override
-  void initState() {
-    super.initState();
-
-    ref.listenManual(loginViewModelProvider.select((vm) => vm.uiState),
+  Widget build(BuildContext context, ref) {
+    ref.listen(signupViewModelProvider.select((vm) => vm.uiState),
         (previous, next) {
       if (next.isSuccess) {
         TextInput.finishAutofillContext();
-        context.pushNamed(DashboardPage.route);
+        context.pushNamed(LoginPage.route);
         return;
       }
     });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(leading: BushaBackButton()),
-      body: AbsorbPointer(
-        absorbing: ref
-            .watch(loginViewModelProvider.select((vm) => vm.uiState.isLoading)),
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: Constants.scaffoldMargin,
-            ),
-            child: Form(
-              autovalidateMode: AutovalidateMode.onUnfocus,
-              child: AutofillGroup(
+    return PopScope(
+      canPop: false,
+      child: Scaffold(
+        appBar: AppBar(automaticallyImplyLeading: false),
+        body: AbsorbPointer(
+          absorbing: ref.watch(
+              signupViewModelProvider.select((vm) => vm.uiState.isLoading)),
+          child: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: Constants.scaffoldMargin,
+              ),
+              child: Form(
+                autovalidateMode: AutovalidateMode.onUnfocus,
                 child: FocusTraversalGroup(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,12 +46,12 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                           bottom: Constants.smallVerticalGutter,
                         ),
                         child: Text(
-                          'Log in to your account',
+                          'Sign up to your account',
                           style: Theme.of(context).textTheme.titleMedium?.semi,
                         ),
                       ),
                       Text(
-                        'Welcome back! Please enter your registered email address to continue',
+                        'Sign up with your email and password',
                         style: Theme.of(context)
                             .textTheme
                             .bodyLarge
@@ -78,11 +67,11 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                       EmailTextFormField(
                         textInputAction: TextInputAction.next,
                         onChanged: ref
-                            .read(loginViewModelProvider.notifier)
+                            .read(signupViewModelProvider.notifier)
                             .emailAddressOnChanged,
                         validator: (_) => ref
-                            .read(loginViewModelProvider)
-                            .loginForm
+                            .read(signupViewModelProvider)
+                            .signUpForm
                             .emailAddress
                             .failureOrNone
                             .fold(() => null, (failure) => failure.message),
@@ -90,22 +79,32 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                       Constants.verticalGutter.verticalSpace,
                       PasswordTextFormField(
                         onChanged: ref
-                            .read(loginViewModelProvider.notifier)
+                            .read(signupViewModelProvider.notifier)
                             .passwordOnChanged,
                         validator: (_) => ref
-                            .read(loginViewModelProvider)
-                            .loginForm
+                            .read(signupViewModelProvider)
+                            .signUpForm
                             .password
                             .failureOrNone
                             .fold(() => null, (failure) => failure.message),
                       ),
+                      Constants.smallVerticalGutter.verticalSpace,
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: TextButton(
+                          onPressed: () {
+                            context.pushNamed(LoginPage.route);
+                          },
+                          child: Text('Log in'),
+                        ),
+                      ),
                       const Spacer(),
                       FilledButton(
                         onPressed:
-                            ref.read(loginViewModelProvider.notifier).login,
+                            ref.read(signupViewModelProvider.notifier).signup,
                         style: FilledButton.styleFrom(
                             foregroundBuilder: (context, states, child) {
-                          if (ref.watch(loginViewModelProvider
+                          if (ref.watch(signupViewModelProvider
                               .select((vm) => vm.uiState.isLoading))) {
                             return Row(
                               mainAxisSize: MainAxisSize.min,

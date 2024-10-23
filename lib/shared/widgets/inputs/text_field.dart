@@ -46,6 +46,7 @@ class BushaTextFormField extends StatelessWidget {
     this.cursorHeight,
     this.autovalidateMode,
     this.maxLengthEnforcement,
+    this.autocorrect = true,
   }) : _contentPadding = contentPadding;
 
   final TextEditingController? controller;
@@ -92,6 +93,7 @@ class BushaTextFormField extends StatelessWidget {
   final double? cursorHeight;
   final AutovalidateMode? autovalidateMode;
   final MaxLengthEnforcement? maxLengthEnforcement;
+  final bool autocorrect;
 
   @override
   Widget build(BuildContext context) {
@@ -134,6 +136,7 @@ class BushaTextFormField extends StatelessWidget {
             validator: validator,
             onTap: onTap,
             onEditingComplete: onEditingComplete,
+            autocorrect: autocorrect,
             decoration: InputDecoration(
               contentPadding: _contentPadding,
               hintText: hintText,

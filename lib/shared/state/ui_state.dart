@@ -1,4 +1,5 @@
 import 'dart:async';
+import '../../routing/routing.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
@@ -6,7 +7,7 @@ import '../exception.dart';
 
 part 'ui_state_model_mutex.dart';
 
-typedef BushaUiStateRef<T extends BushaUiStateModel<T>> = List<T>;
+typedef BushaUiStateRef<T extends BushaUiState<T>> = List<T>;
 typedef VoidWidgetCallback = Widget Function();
 
 Widget _kIdleClosure() => const SizedBox.shrink();
@@ -29,9 +30,8 @@ enum UiState {
 }
 
 @immutable
-abstract base class BushaUiStateModel<T extends BushaUiStateModel<T>>
-    extends Equatable {
-  const BushaUiStateModel({
+abstract base class BushaUiState<T extends BushaUiState<T>> extends Equatable {
+  const BushaUiState({
     this.uiState = UiState.idle,
     this.exception = const EmptyException(),
   });
@@ -53,9 +53,9 @@ abstract base class BushaUiStateModel<T extends BushaUiStateModel<T>>
 }
 
 @immutable
-abstract base class BushaFormUiStateModel<T extends BushaFormUiStateModel<T>>
-    extends BushaUiStateModel<T> {
-  const BushaFormUiStateModel({
+abstract base class BushaFormUiState<T extends BushaFormUiState<T>>
+    extends BushaUiState<T> {
+  const BushaFormUiState({
     super.uiState,
     super.exception,
     this.showFormErrors = false,
@@ -71,10 +71,11 @@ abstract base class BushaFormUiStateModel<T extends BushaFormUiStateModel<T>>
   });
 
   @override
-  List<Object?> get props => [...super.props, showFormErrors];
+  List<Object?> get props =>
+      [...super.props, ...super.otherProps, showFormErrors];
 }
 
-Future<void> launch<E extends BushaUiStateModel<E>>(
+Future<void> launch<E extends BushaUiState<E>>(
   BushaUiStateRef<E> model,
   FutureOr<void> Function(BushaUiStateRef<E> model) function, {
   bool displayError = true,
@@ -93,7 +94,7 @@ Future<void> launch<E extends BushaUiStateModel<E>>(
 
 bool _kDisplayError([_]) => true;
 
-extension DealershipFormUiStatelX<T extends BushaFormUiStateModel<T>> on T {
+extension DealershipFormUiStatelX<T extends BushaFormUiState<T>> on T {
   T toggleFormErrors([bool? showFormError]) {
     return copyWith(showFormErrors: showFormError ?? !showFormErrors);
   }
@@ -107,7 +108,7 @@ extension DealershipFormUiStatelX<T extends BushaFormUiStateModel<T>> on T {
   }
 }
 
-extension UiStateX<T extends BushaUiStateModel<T>> on T {
+extension UiStateX<T extends BushaUiState<T>> on T {
   BushaUiStateRef<T> get reference => [this];
 
   Widget when({
@@ -152,26 +153,26 @@ extension UiStateX<T extends BushaUiStateModel<T>> on T {
 
   void displayError() async {
     if (uiState != UiState.error) return;
-    // assert(error is! EmptyException, 'Please pass appropriate exception');
-    //
-    // final context = AppRouter.navKey.currentContext!;
-    // final snackbar = SnackBar(
-    //   backgroundColor: Theme.of(context).colorScheme.error,
-    //   duration: Constants.snackBarDur,
-    //   content: Text(
-    //     error.toString(),
-    //     style: Theme.of(context)
-    //         .textTheme
-    //         .bodyMedium
-    //         ?.copyWith(color: Theme.of(context).colorScheme.surface),
-    //   ),
-    // );
-    //
-    // ScaffoldMessenger.maybeOf(context)?.showSnackBar(snackbar);
+    assert(exception is! EmptyException, 'Please pass appropriate exception');
+
+    final context = BushaRouter.routeKey.currentContext!;
+    final snackbar = SnackBar(
+      backgroundColor: Theme.of(context).colorScheme.error,
+      duration: Duration(seconds: 2),
+      content: Text(
+        exception.toString(),
+        style: Theme.of(context)
+            .textTheme
+            .bodyMedium
+            ?.copyWith(color: Theme.of(context).colorScheme.surface),
+      ),
+    );
+
+    ScaffoldMessenger.maybeOf(context)?.showSnackBar(snackbar);
   }
 }
 
-extension ViewModelRefX<T extends BushaUiStateModel<T>> on BushaUiStateRef<T> {
+extension ViewModelRefX<T extends BushaUiState<T>> on BushaUiStateRef<T> {
   BushaUiStateRef<T> _assign(T value) => this..insert(0, value);
 
   T get _state => elementAt(0);
