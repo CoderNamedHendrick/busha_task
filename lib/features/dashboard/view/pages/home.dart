@@ -28,6 +28,7 @@ class _DashboardPageState extends State<_View> {
       body: Center(
         child: Text('Dashboard Page'),
       ),
+
     );
   }
 }
