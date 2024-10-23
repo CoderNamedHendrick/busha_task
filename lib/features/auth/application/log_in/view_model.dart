@@ -32,7 +32,7 @@ final class LoginViewModel extends AutoDisposeNotifier<LoginUiState> {
         state = state.sLoading().emitTo(model);
 
         final result = await Future.delayed(
-          Duration(seconds: 2),
+          const Duration(seconds: 2),
           () async => await _authRepository.loginUser(state.loginForm.toDto()),
         );
         state = result

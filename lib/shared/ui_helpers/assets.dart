@@ -12,6 +12,7 @@ class SvgAssets {
   static const percentOutline = '${_baseUri}percent_outline.svg';
   static const polygonCoin = '${_baseUri}polygon_coin.svg';
   static const scan = '${_baseUri}scan.svg';
+  static const search = '${_baseUri}search.svg';
   static const solanaCoin = '${_baseUri}solana_coin.svg';
   static const spendOutlined = '${_baseUri}spend_outlined.svg';
   static const walletOutlined2 = '${_baseUri}wallet_outlined2.svg';
@@ -27,6 +28,7 @@ class SvgAssets {
       percentOutline,
       polygonCoin,
       scan,
+      search,
       solanaCoin,
       spendOutlined,
       walletOutlined2,

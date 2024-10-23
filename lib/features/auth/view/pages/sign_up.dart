@@ -95,7 +95,7 @@ class SignUpPage extends ConsumerWidget {
                           onPressed: () {
                             context.pushNamed(LoginPage.route);
                           },
-                          child: Text('Log in'),
+                          child: const Text('Log in'),
                         ),
                       ),
                       const Spacer(),
@@ -122,7 +122,7 @@ class SignUpPage extends ConsumerWidget {
                           }
                           return child!;
                         }),
-                        child: Text('Continue'),
+                        child: const Text('Continue'),
                       ),
                     ],
                   ),

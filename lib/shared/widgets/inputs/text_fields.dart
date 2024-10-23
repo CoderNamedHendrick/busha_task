@@ -78,11 +78,11 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
       readOnly: widget.readOnly,
       obscureText: obscurePassword,
       keyboardType: TextInputType.visiblePassword,
-      suffixConstraints: BoxConstraints(maxWidth: 80),
+      suffixConstraints: const BoxConstraints(maxWidth: 80),
       autocorrect: false,
-      autofillHints: [AutofillHints.password, AutofillHints.newPassword],
+      autofillHints: const [AutofillHints.password, AutofillHints.newPassword],
       suffix: InkWell(
-        borderRadius: BorderRadius.all(Radius.circular(12)),
+        borderRadius: const BorderRadius.all(Radius.circular(12)),
         onTap: _togglePasswordVisibility,
         child: DefaultTextStyle(
           style: Theme.of(context)
@@ -90,10 +90,10 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
               .labelStyle!
               .copyWith(fontSize: 12),
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
             child: switch (obscurePassword) {
-              true => Text('SHOW'),
-              false => Text('HIDE'),
+              true => const Text('SHOW'),
+              false => const Text('HIDE'),
             },
           ),
         ),

@@ -5,4 +5,6 @@ export './utils/option.dart';
 export './utils/value_failure.dart';
 export './utils/value_object.dart';
 export 'exception.dart';
+export 'mixins.dart';
 export 'widgets/widgets.dart';
+

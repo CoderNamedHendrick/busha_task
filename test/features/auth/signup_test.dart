@@ -27,9 +27,9 @@ void main() {
     tearDown(() => container.dispose());
 
     test('Sign up success test', () async {
-      when(() => mockAuthRepo.signupUser(AuthDto(
+      when(() => mockAuthRepo.signupUser(const AuthDto(
               emailAddress: 'johndoe@gmail.com', password: 'BushaTestTest')))
-          .thenAnswer((_) => Future.value(Right('Login successful')));
+          .thenAnswer((_) => Future.value(const Right('Login successful')));
 
       expect(container.read(signupViewModelProvider).uiState, UiState.idle);
       expect(
@@ -78,10 +78,10 @@ void main() {
 
     testWidgets('sign up failure test', (tester) async {
       when(() => mockAuthRepo.signupUser(
-          AuthDto(
+          const AuthDto(
               emailAddress: 'johndoe@gmail.com',
               password: 'BushaTestTest'))).thenAnswer(
-          (_) => Future.value(Left(MessageException('User already exists'))));
+          (_) => Future.value(const Left(MessageException('User already exists'))));
 
       expect(container.read(signupViewModelProvider).uiState, UiState.idle);
       expect(

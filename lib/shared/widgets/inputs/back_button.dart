@@ -13,7 +13,7 @@ class BushaBackButton extends StatelessWidget {
     return IconButton(
       onPressed: onTap ?? Navigator.of(context).maybePop,
       tooltip: 'Back',
-      icon: SvgIcon(SvgAssets.arrowLeft, semanticLabel: 'Back icon'),
+      icon: const SvgIcon(SvgAssets.arrowLeft, semanticLabel: 'Back icon'),
     );
   }
 }

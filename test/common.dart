@@ -17,7 +17,7 @@ class UnitTestApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       navigatorKey: BushaRouter.routeKey,
-      home: ProviderScope(child: Scaffold()),
+      home: const ProviderScope(child: Scaffold()),
     );
   }
 }

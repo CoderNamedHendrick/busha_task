@@ -26,9 +26,9 @@ void main() {
     tearDown(() => container.dispose());
 
     test('log in success test', () async {
-      when(() => mockAuthRepo.loginUser(AuthDto(
+      when(() => mockAuthRepo.loginUser(const AuthDto(
               emailAddress: 'johndoe@gmail.com', password: 'BushaTestTest')))
-          .thenAnswer((_) => Future.value(Right('Login successful')));
+          .thenAnswer((_) => Future.value(const Right('Login successful')));
 
       expect(container.read(loginViewModelProvider).uiState, UiState.idle);
       expect(
@@ -76,10 +76,10 @@ void main() {
     });
 
     testWidgets('log in failure test', (tester) async {
-      when(() => mockAuthRepo.loginUser(AuthDto(
+      when(() => mockAuthRepo.loginUser(const AuthDto(
               emailAddress: 'johndoe@gmail.com', password: 'BushaTestTest')))
           .thenAnswer(
-              (_) => Future.value(Left(MessageException('User not found'))));
+              (_) => Future.value(const Left(MessageException('User not found'))));
 
       expect(container.read(loginViewModelProvider).uiState, UiState.idle);
       expect(

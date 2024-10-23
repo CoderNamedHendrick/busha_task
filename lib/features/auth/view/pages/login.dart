@@ -35,7 +35,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(leading: BushaBackButton()),
+      appBar: AppBar(leading: const BushaBackButton()),
       body: AbsorbPointer(
         absorbing: ref
             .watch(loginViewModelProvider.select((vm) => vm.uiState.isLoading)),
@@ -123,7 +123,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                           }
                           return child!;
                         }),
-                        child: Text('Continue'),
+                        child: const Text('Continue'),
                       ),
                     ],
                   ),

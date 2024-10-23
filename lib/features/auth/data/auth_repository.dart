@@ -42,13 +42,13 @@ final class AuthRepositoryImpl implements AuthRepository {
 
     final user = users.firstWhereOrNull(
         (element) => element.emailAddress == dto.emailAddress);
-    if (user == null) return Left(MessageException('User not found'));
+    if (user == null) return const Left(MessageException('User not found'));
 
     if (user.password != dto.password) {
-      return Left(MessageException('Invalid password'));
+      return const Left(MessageException('Invalid password'));
     }
 
-    return Right('Login successful');
+    return const Right('Login successful');
   }
 
   @override
@@ -58,9 +58,9 @@ final class AuthRepositoryImpl implements AuthRepository {
     final user = users.firstWhereOrNull(
         (element) => element.emailAddress == dto.emailAddress);
 
-    if (user != null) return Left(MessageException('User already exists'));
+    if (user != null) return const Left(MessageException('User already exists'));
 
     await _saveUsers(dto);
-    return Right('Signup successful');
+    return const Right('Signup successful');
   }
 }

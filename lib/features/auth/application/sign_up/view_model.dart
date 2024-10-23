@@ -31,7 +31,7 @@ final class SignUpViewModel extends AutoDisposeNotifier<SignUpUiState> {
       await launch(state.reference, (model) async {
         state = state.sLoading().emitTo(model);
         final result = await Future.delayed(
-          Duration(seconds: 2),
+          const Duration(seconds: 2),
           () async =>
               await _authRepository.signupUser(state.signUpForm.toDto()),
         );

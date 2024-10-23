@@ -158,7 +158,7 @@ extension UiStateX<T extends BushaUiState<T>> on T {
     final context = BushaRouter.routeKey.currentContext!;
     final snackbar = SnackBar(
       backgroundColor: Theme.of(context).colorScheme.error,
-      duration: Duration(seconds: 2),
+      duration: const Duration(seconds: 2),
       content: Text(
         exception.toString(),
         style: Theme.of(context)

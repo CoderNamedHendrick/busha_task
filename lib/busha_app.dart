@@ -32,9 +32,9 @@ class _BushaAppState extends State<BushaApp> {
               borderRadius: BorderRadius.circular(8),
               borderSide: BorderSide.none,
             ),
-            contentPadding: EdgeInsets.all(12),
-            fillColor: Color(0xffefefef),
-            labelStyle: TextStyle(
+            contentPadding: const EdgeInsets.all(12),
+            fillColor: const Color(0xffefefef),
+            labelStyle: const TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w400,
               color: Color(0xff5a5a5a),
@@ -45,24 +45,25 @@ class _BushaAppState extends State<BushaApp> {
             ).inter,
           ),
           colorScheme: ColorScheme.fromSeed(
-            seedColor: Color(0xff12a633),
+            seedColor: const Color(0xff12a633),
             surface: Colors.white,
             onSurface: Colors.black,
-            onSurfaceVariant: Color(0xff9ba0a5),
-            error: Color(0xffc00f00),
+            onSurfaceVariant: const Color(0xff9ba0a5),
+            surfaceTint: const Color(0xffb7b7b7),
+            error: const Color(0xffc00f00),
           ),
           textTheme: GoogleFonts.interTextTheme().copyWith(
-            titleMedium: TextStyle(fontSize: 20),
-            bodyLarge: TextStyle(fontSize: 16),
-            bodyMedium: TextStyle(fontSize: 14),
+            titleMedium: const TextStyle(fontSize: 20),
+            bodyLarge: const TextStyle(fontSize: 16),
+            bodyMedium: const TextStyle(fontSize: 14),
           ),
           filledButtonTheme: FilledButtonThemeData(
             style: FilledButton.styleFrom(
               foregroundColor: Colors.white,
-              backgroundColor: Color(0xff12a633),
-              minimumSize: Size(double.infinity, 48),
-              textStyle: TextStyle(fontSize: 16).semi,
-              shape: RoundedRectangleBorder(
+              backgroundColor: const Color(0xff12a633),
+              minimumSize: const Size(double.infinity, 48),
+              textStyle: const TextStyle(fontSize: 16).semi,
+              shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(8)),
               ),
             ),
