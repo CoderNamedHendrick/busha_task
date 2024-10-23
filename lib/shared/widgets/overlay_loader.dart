@@ -1,9 +1,6 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 import '../shared.dart';
-import 'circular_progress.dart';
 
 class BushaOverlayIndicator extends StatelessWidget {
   const BushaOverlayIndicator({
@@ -29,7 +26,7 @@ class BushaOverlayIndicator extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CircularProgressIndicator(
+                  const CircularProgressIndicator(
                     strokeCap: StrokeCap.round,
                     strokeWidth: 8,
                   ),
