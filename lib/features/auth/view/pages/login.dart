@@ -17,7 +17,10 @@ class LoginPage extends ConsumerStatefulWidget {
   ConsumerState<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginPageState extends ConsumerState<LoginPage> {
+class _LoginPageState extends ConsumerState<LoginPage> with MHelpers {
+  final emailAddress = TextEditingController();
+  final password = TextEditingController();
+
   @override
   void initState() {
     super.initState();
@@ -30,6 +33,13 @@ class _LoginPageState extends ConsumerState<LoginPage> {
         return;
       }
     });
+  }
+
+  @override
+  void dispose() {
+    emailAddress.dispose();
+    password.dispose();
+    super.dispose();
   }
 
   @override
@@ -76,6 +86,11 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                       ),
                       Constants.largeVerticalGutter.verticalSpace,
                       EmailTextFormField(
+                        controller: emailAddress,
+                        autofillHints: const [
+                          AutofillHints.username,
+                          AutofillHints.email
+                        ],
                         textInputAction: TextInputAction.next,
                         onChanged: ref
                             .read(loginViewModelProvider.notifier)
@@ -89,6 +104,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                       ),
                       Constants.verticalGutter.verticalSpace,
                       PasswordTextFormField(
+                        controller: password,
+                        autofillHints: const [AutofillHints.password],
                         onChanged: ref
                             .read(loginViewModelProvider.notifier)
                             .passwordOnChanged,
@@ -101,8 +118,10 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                       ),
                       const Spacer(),
                       FilledButton(
-                        onPressed:
-                            ref.read(loginViewModelProvider.notifier).login,
+                        onPressed: () {
+                          unfocus();
+                          ref.read(loginViewModelProvider.notifier).login();
+                        },
                         style: FilledButton.styleFrom(
                             foregroundBuilder: (context, states, child) {
                           if (ref.watch(loginViewModelProvider

@@ -22,7 +22,9 @@ class _BushaAppState extends State<BushaApp> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: FocusManager.instance.primaryFocus?.unfocus,
+      onTap: () {
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(

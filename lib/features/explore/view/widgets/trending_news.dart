@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import '../../../../routing/routing.dart';
 import '../../../../shared/shared.dart';
+import '../pages/news_detail.dart';
 import 'widgets.dart';
 
 class TrendingNews extends StatelessWidget {
@@ -41,6 +43,10 @@ class TrendingNews extends StatelessWidget {
           physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           itemBuilder: (context, index) {
+            void onTap() {
+              context.pushNamed(NewsDetailPage.route);
+            }
+
             if (index == 0) {
               return NewsTile.expanded(
                 headlineTitle:
@@ -48,7 +54,7 @@ class TrendingNews extends StatelessWidget {
                 publication: 'CoinDesk',
                 publishedAt: DateTime.now().subtract(const Duration(hours: 2)),
                 imageUrl: ImageAssets.newsImage,
-                onTap: () {},
+                onTap: onTap,
               );
             }
 
@@ -58,7 +64,7 @@ class TrendingNews extends StatelessWidget {
               publication: 'CoinDesk',
               publishedAt: DateTime.now().subtract(const Duration(hours: 2)),
               imageUrl: ImageAssets.newsImage,
-              onTap: () {},
+              onTap: onTap,
             );
           },
           separatorBuilder: (context, index) => Padding(

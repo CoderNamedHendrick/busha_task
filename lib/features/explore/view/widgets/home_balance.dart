@@ -88,7 +88,7 @@ class _BalanceInfoState extends State<BalanceInfo> with IntlFormats {
                               .onSurface
                               .withOpacity(0.6))
                       : Icon(Icons.remove_red_eye_outlined,
-                          key: const Key('not visible'),
+                          key: const Key('hidden'),
                           size: 16,
                           color: Theme.of(context)
                               .colorScheme

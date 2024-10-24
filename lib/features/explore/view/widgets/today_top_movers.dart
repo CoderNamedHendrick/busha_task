@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import '../../../../routing/routing.dart';
 import '../../../../shared/shared.dart';
+import '../pages/asset_detail.dart';
 import 'mover_tile.dart';
 import 'price_movement.dart';
 
@@ -57,7 +59,9 @@ class TodayTopMovers extends StatelessWidget {
                     fit: BoxFit.fill,
                   ),
                   priceMovement: const PriceMovement.down(percentage: 1.76),
-                  onTap: () {},
+                  onTap: () {
+                    context.pushNamed(AssetDetailPage.route);
+                  },
                 ),
                 Constants.smallHorizontalGutter.horizontalSpace,
                 MoverTile(
@@ -67,7 +71,9 @@ class TodayTopMovers extends StatelessWidget {
                     fit: BoxFit.fill,
                   ),
                   priceMovement: const PriceMovement.up(percentage: 1.76),
-                  onTap: () {},
+                  onTap: () {
+                    context.pushNamed(AssetDetailPage.route);
+                  },
                 ),
                 Constants.smallHorizontalGutter.horizontalSpace,
                 MoverTile(
@@ -77,7 +83,9 @@ class TodayTopMovers extends StatelessWidget {
                     fit: BoxFit.fill,
                   ),
                   priceMovement: const PriceMovement.up(percentage: 1.76),
-                  onTap: () {},
+                  onTap: () {
+                    context.pushNamed(AssetDetailPage.route);
+                  },
                 ),
               ],
             ),

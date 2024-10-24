@@ -2,6 +2,7 @@ import '../features/auth/auth.dart';
 import 'package:flutter/material.dart';
 
 import '../features/dashboard/dashboard.dart';
+import '../features/explore/explore.dart';
 import '../features/transactions/domain/dtos/dtos.dart';
 import '../features/transactions/transactions.dart';
 
@@ -36,6 +37,10 @@ class BushaRouter {
                 'Invalid arguments for ${settings.name} route'),
           },
         ),
+      AssetDetailPage.route =>
+        MaterialPageRoute(builder: (_) => const AssetDetailPage()),
+      NewsDetailPage.route =>
+        MaterialPageRoute(builder: (_) => const NewsDetailPage()),
       _ => MaterialPageRoute(
           builder: (_) => Scaffold(
             body: Center(

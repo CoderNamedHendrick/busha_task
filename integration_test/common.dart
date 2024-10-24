@@ -1,11 +1,16 @@
 import 'package:busha_interview/busha_app.dart';
+import 'package:busha_interview/features/auth/domain/domain.dart';
+import 'package:busha_interview/features/transactions/domain/repositories/repositories.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:patrol_finders/patrol_finders.dart';
 
+import 'mocks.dart';
+
 const waitTime = Duration(milliseconds: 700);
+const kActionDelay = Duration(milliseconds: 800);
 
 Future<void> createApp(PatrolTester tester) async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +29,16 @@ Future<void> createApp(PatrolTester tester) async {
     overlays: [SystemUiOverlay.top],
   );
 
-  await tester.pumpWidgetAndSettle(const ProviderScope(child: BushaApp()));
+  await tester.pumpWidgetAndSettle(ProviderScope(
+    overrides: [
+      authRepositoryProvider.overrideWithValue(MockAuthRepository()),
+      transactionRepositoryProvider('BTC')
+          .overrideWithValue(MockBTCTransactionRepository()),
+      transactionRepositoryProvider('XTZ')
+          .overrideWithValue(MockBTCTransactionRepository()),
+    ],
+    child: const BushaApp(),
+  ));
 }
 
 extension PatrolFinderX on PatrolFinder {

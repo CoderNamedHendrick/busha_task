@@ -15,7 +15,7 @@ class EmailTextFormField extends BushaTextFormField {
     super.textInputAction,
     super.readOnly = false,
     autocorrect = false,
-    autofillHints = const [
+    super.autofillHints = const [
       AutofillHints.email,
       AutofillHints.newUsername,
       AutofillHints.username,
@@ -37,6 +37,10 @@ class PasswordTextFormField extends StatefulWidget {
     this.focusNode,
     this.textInputAction,
     this.readOnly = false,
+    this.autofillHints = const [
+      AutofillHints.password,
+      AutofillHints.newPassword
+    ],
   });
 
   final String? title;
@@ -49,6 +53,7 @@ class PasswordTextFormField extends StatefulWidget {
   final FocusNode? focusNode;
   final TextInputAction? textInputAction;
   final bool readOnly;
+  final List<String>? autofillHints;
 
   @override
   State<PasswordTextFormField> createState() => _PasswordTextFormFieldState();
@@ -80,7 +85,7 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
       keyboardType: TextInputType.visiblePassword,
       suffixConstraints: const BoxConstraints(maxWidth: 80),
       autocorrect: false,
-      autofillHints: const [AutofillHints.password, AutofillHints.newPassword],
+      autofillHints: widget.autofillHints,
       suffix: InkWell(
         borderRadius: const BorderRadius.all(Radius.circular(12)),
         onTap: _togglePasswordVisibility,

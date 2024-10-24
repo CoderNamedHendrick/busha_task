@@ -118,9 +118,11 @@ class _Transactions extends ConsumerWidget {
     }
 
     return ListView.separated(
+      key: const Key('transactions_list'),
       padding:
           const EdgeInsets.symmetric(horizontal: Constants.horizontalGutter),
       itemBuilder: (context, index) => TransactionTile(
+        key: Key('transaction$index'),
         transaction: transactions[index],
         onTap: () {
           context.pushNamed(TransactionDetailPage.route,
