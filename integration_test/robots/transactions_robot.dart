@@ -1,5 +1,4 @@
 import 'package:busha_interview/features/transactions/view/widgets/widgets.dart';
-import 'package:busha_interview/shared/shared.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -17,11 +16,6 @@ final class TransactionsRobot extends IRobot {
 
     final tile = await tester(Key('transaction$index')).scrollTo();
     await tile.tap();
-    return await Future.delayed(kActionDelay);
-  }
-
-  Future<void> tapBackButton() async {
-    await tester(BushaBackButton).tap();
     return await Future.delayed(kActionDelay);
   }
 }

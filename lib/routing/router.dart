@@ -55,4 +55,8 @@ class BushaRouter {
 extension RouterX on BuildContext {
   Future<dynamic> pushNamed(String route, {Object? arguments}) =>
       Navigator.of(this).pushNamed(route, arguments: arguments);
+
+  Future<dynamic> pushNamedAndPopAll(String route, {Object? arguments}) =>
+      Navigator.of(this)
+          .pushNamedAndRemoveUntil(route, (_) => false, arguments: arguments);
 }

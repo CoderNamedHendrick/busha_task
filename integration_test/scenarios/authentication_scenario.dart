@@ -15,6 +15,13 @@ void main() {
     expect(await tester(LoginPage).safeExists(), true);
 
     // When:
+    await robot.tapContinue();
+
+    // Then:
+    expect(tester('Email address cannot be empty').exists, true);
+    expect(tester('Password cannot be empty').exists, true);
+
+    // When:
     await robot.tapBackButton();
 
     // Then:
@@ -23,10 +30,23 @@ void main() {
     // When:
     await robot.enterEmail('sebastinesoacatp@gmail.com');
     await robot.enterPassword('Sebastine');
+    await robot.tapPasswordVisibilityToggle();
     await robot.tapContinue();
 
     // Then:
     expect(tester(LoginPage).exists, true);
+
+    // When:
+    await robot.enterEmail('sebastinesoacatp1@gmail.com');
+    await robot.enterPassword('Sebastine');
+    await robot.tapContinue(settlePolicy: SettlePolicy.noSettle);
+
+    // Then:
+    expect(
+      await tester('User not found').safeExists(const Duration(seconds: 5)),
+      true,
+    );
+    await tester.pumpAndSettle();
 
     // When:
     await robot.enterEmail('sebastinesoacatp@gmail.com');

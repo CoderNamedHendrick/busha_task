@@ -26,7 +26,7 @@ class _BushaAppState extends State<BushaApp> {
         FocusManager.instance.primaryFocus?.unfocus();
       },
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Busha Interview',
         theme: ThemeData(
           inputDecorationTheme: InputDecorationTheme(
             filled: true,

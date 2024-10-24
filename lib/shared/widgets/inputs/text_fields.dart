@@ -97,8 +97,8 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
             child: switch (obscurePassword) {
-              true => const Text('SHOW'),
-              false => const Text('HIDE'),
+              true => const Text('SHOW', key: Key('showPassword')),
+              false => const Text('HIDE', key: Key('hidePassword')),
             },
           ),
         ),

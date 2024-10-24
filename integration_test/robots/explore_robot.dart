@@ -1,5 +1,4 @@
 import 'package:busha_interview/features/explore/view/widgets/widgets.dart';
-import 'package:busha_interview/shared/shared.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -40,11 +39,6 @@ final class ExploreRobot extends IRobot {
 
   Future<void> tapNewsTile() async {
     await tester(NewsTile).tap();
-    return await Future.delayed(kActionDelay);
-  }
-
-  Future<void> tapBackButton() async {
-    await tester(BushaBackButton).tap();
     return await Future.delayed(kActionDelay);
   }
 }

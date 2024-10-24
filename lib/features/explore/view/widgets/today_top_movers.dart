@@ -50,6 +50,7 @@ class TodayTopMovers extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.symmetric(
                 horizontal: Constants.horizontalGutter),
+            physics: const BouncingScrollPhysics(),
             child: Row(
               children: [
                 MoverTile(

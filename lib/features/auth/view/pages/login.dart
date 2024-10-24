@@ -29,7 +29,7 @@ class _LoginPageState extends ConsumerState<LoginPage> with MHelpers {
         (previous, next) {
       if (next.isSuccess) {
         TextInput.finishAutofillContext();
-        context.pushNamed(DashboardPage.route);
+        context.pushNamedAndPopAll(DashboardPage.route);
         return;
       }
     });
@@ -55,7 +55,10 @@ class _LoginPageState extends ConsumerState<LoginPage> with MHelpers {
               horizontal: Constants.scaffoldMargin,
             ),
             child: Form(
-              autovalidateMode: AutovalidateMode.onUnfocus,
+              autovalidateMode: ref.watch(
+                      loginViewModelProvider.select((vm) => vm.showFormErrors))
+                  ? AutovalidateMode.always
+                  : AutovalidateMode.onUnfocus,
               child: AutofillGroup(
                 child: FocusTraversalGroup(
                   child: Column(
@@ -144,6 +147,7 @@ class _LoginPageState extends ConsumerState<LoginPage> with MHelpers {
                         }),
                         child: const Text('Continue'),
                       ),
+                      Constants.smallVerticalGutter.verticalSpace,
                     ],
                   ),
                 ),

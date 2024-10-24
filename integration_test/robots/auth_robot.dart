@@ -1,35 +1,39 @@
 import 'package:busha_interview/shared/shared.dart';
+import 'package:patrol_finders/patrol_finders.dart';
 
+import '../common.dart';
 import 'i_robot.dart';
 
 final class AuthRobot extends IRobot {
   const AuthRobot(super.tester);
 
-  Future<void> tapContinue() async {
-    return await tester('Continue').tap();
+  Future<void> tapContinue({SettlePolicy? settlePolicy}) async {
+    await tester('Continue').tap(settlePolicy: settlePolicy);
+    return await Future.delayed(kActionDelay);
   }
 
   Future<void> tapLogin() async {
-    return await tester('Log in').tap();
-  }
-
-  Future<void> tapBackButton() async {
-    return await tester(BushaBackButton).tap();
+    await tester('Log in').tap();
+    return await Future.delayed(kActionDelay);
   }
 
   Future<void> tapPasswordVisibilityToggle() async {
-    if (tester('SHOW').exists) {
-      return await tester('SHOW').tap();
+    if (tester(#showPassword).exists) {
+      await tester(#showPassword).tap();
     } else {
-      return await tester('HIDE').tap();
+      await tester(#hidePassword).tap();
     }
+
+    return await Future.delayed(kActionDelay);
   }
 
   Future<void> enterEmail(String email) async {
-    return await tester(EmailTextFormField).enterText(email);
+    await tester(EmailTextFormField).enterText(email);
+    return await Future.delayed(kActionDelay);
   }
 
   Future<void> enterPassword(String password) async {
-    return await tester(PasswordTextFormField).enterText(password);
+    await tester(PasswordTextFormField).enterText(password);
+    return await Future.delayed(kActionDelay);
   }
 }

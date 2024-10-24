@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'scenarios/authentication_test.dart' as auth_test;
-import 'scenarios/dashboard_test.dart' as dashboard_test;
-import 'scenarios/explore_test.dart' as explore_test;
+import 'scenarios/authentication_scenario.dart' as auth_test;
+import 'scenarios/dashboard_scenario.dart' as dashboard_test;
+import 'scenarios/explore_scenario.dart' as explore_test;
 
 void main() {
   group('Busha Scenarios', () {

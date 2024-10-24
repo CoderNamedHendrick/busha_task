@@ -55,7 +55,10 @@ class _SignUpPageState extends ConsumerState<SignUpPage> with MHelpers {
                 horizontal: Constants.scaffoldMargin,
               ),
               child: Form(
-                autovalidateMode: AutovalidateMode.onUnfocus,
+                autovalidateMode: ref.watch(signupViewModelProvider
+                        .select((vm) => vm.showFormErrors))
+                    ? AutovalidateMode.always
+                    : AutovalidateMode.onUnfocus,
                 child: FocusTraversalGroup(
                   child: AutofillGroup(
                     child: Column(
@@ -156,6 +159,7 @@ class _SignUpPageState extends ConsumerState<SignUpPage> with MHelpers {
                           }),
                           child: const Text('Continue'),
                         ),
+                        Constants.smallVerticalGutter.verticalSpace,
                       ],
                     ),
                   ),

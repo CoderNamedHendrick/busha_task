@@ -134,6 +134,7 @@ void main() {
       ]);
 
       expect(container.read(loginViewModelProvider).uiState, UiState.idle);
-    });
+    }, );
+
   });
 }

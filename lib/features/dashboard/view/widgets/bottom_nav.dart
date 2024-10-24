@@ -57,12 +57,15 @@ class _BushaBottomNavState extends State<BushaBottomNav> {
       child: Builder(
         builder: (context) {
           return Container(
-            height: 71 + additionalBottomPadding,
-            padding: EdgeInsets.only(bottom: additionalBottomPadding),
+            padding: EdgeInsets.only(
+              bottom: additionalBottomPadding + 6,
+              top: 24,
+            ),
             decoration: BoxDecoration(
               color: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
               border: Border(
-                top: BorderSide(color: widget.borderColor ?? const Color(0xffe3e5e6)),
+                top: BorderSide(
+                    color: widget.borderColor ?? const Color(0xffe3e5e6)),
               ),
             ),
             child: Row(

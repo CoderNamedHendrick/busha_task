@@ -1,3 +1,5 @@
+// coverage:ignore-file
+
 import 'package:equatable/equatable.dart';
 
 final class LatestBlockInfo extends Equatable {

@@ -11,11 +11,6 @@ final class TransactionDto extends Equatable {
     required this.metadata,
   });
 
-  TransactionDto.empty()
-      : hash = '',
-        time = DateTime(1800),
-        metadata = {};
-
   @override
   List<Object> get props => [hash, time, metadata];
 }
