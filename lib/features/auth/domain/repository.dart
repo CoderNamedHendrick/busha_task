@@ -1,5 +1,5 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
+// ignore: depend_on_referenced_packages
+import 'package:riverpod/riverpod.dart';
 import '../../../shared/network/data_transformer.dart';
 import '../data/auth_repository.dart';
 import 'domain.dart';

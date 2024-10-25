@@ -6,6 +6,9 @@
 
 <img src="submission/demo.gif" alt="Demo Showcase"/>
 
+> [!NOTE]
+> Project runs on flutter version 3.24.3
+
 ### 📚 Description
 
 The project is a simple implementation of Busha's interview task. It involves a user logging in to
