@@ -3,7 +3,7 @@ name: Continuous integration pipeline
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   run-tests-and-upload-coverage-report:
