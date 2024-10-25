@@ -12,6 +12,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - uses: ConorMacBride/install-package@v1
+        with:
+          brew: lcov
+
       - uses: futureware-tech/simulator-action@v3
         with:
           mode: 'iPhone 14'
@@ -26,6 +30,7 @@ jobs:
         with:
           channel: 'stable'
 
+
       - name: Install dependencies
         run: flutter pub get
 
@@ -36,10 +41,13 @@ jobs:
         run: flutter analyze --no-pub
 
       - name: Run integration tests
-        run: flutter test integration_test --coverage
+        run: flutter test integration_test --coverage --coverage-path=coverage/integration_coverage_lcov.info
 
       - name: Run unit tests
-        run: flutter test test --coverage
+        run: flutter test test --coverage --coverage-path=coverage/unit_coverage_lcov.info
+
+      - name: Merge coverage before upload
+        run: lcov -a coverage/unit_coverage_lcov.info -a coverage/integration_coverage_lcov.info -o ./coverage/lcov.info
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
