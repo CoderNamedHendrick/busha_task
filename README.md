@@ -1,6 +1,6 @@
 # 🏗️ Busha Interview Task
 
-[![codecov](https://codecov.io/gh/CoderNamedHendrick/busha_task/graph/badge.svg?token=6rzcp4thSu)](https://codecov.io/gh/CoderNamedHendrick/busha_task)
+[![codecov](https://codecov.io/gh/CoderNamedHendrick/busha_task/branch/master/graph/badge.svg?token=6rzcp4thSu)](https://codecov.io/gh/CoderNamedHendrick/busha_task)
 
 ### ▶️ Demo Showcase
 
