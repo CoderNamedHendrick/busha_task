@@ -65,6 +65,7 @@ class _BushaAppState extends State<BushaApp> {
           ),
           colorScheme: ColorScheme.fromSeed(
             seedColor: const Color(0xff12a633),
+            primary: const Color(0xff12a633),
             surface: Colors.white,
             onSurface: Colors.black,
             onSurfaceVariant: const Color(0xff9ba0a5),
