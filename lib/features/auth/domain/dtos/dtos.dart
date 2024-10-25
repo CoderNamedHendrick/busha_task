@@ -1,2 +1,2 @@
-//GENERATED BARREL FILE 
-export 'auth_dto.dart'; 
+//GENERATED BARREL FILE
+export 'auth_dto.dart';

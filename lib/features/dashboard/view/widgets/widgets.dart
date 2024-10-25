@@ -1,2 +1,2 @@
-//GENERATED BARREL FILE 
-export 'bottom_nav.dart'; 
+//GENERATED BARREL FILE
+export 'bottom_nav.dart';

@@ -62,5 +62,6 @@ class Some<E> extends Option<E> {
   Option<R> flatMap<R>(Option<R> Function(E value) f) => f(value);
 
   @override
-  R fold<R>(R Function() onEmpty, R Function(E value) onDefined) => onDefined(value);
+  R fold<R>(R Function() onEmpty, R Function(E value) onDefined) =>
+      onDefined(value);
 }

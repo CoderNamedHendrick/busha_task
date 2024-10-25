@@ -58,7 +58,8 @@ final class AuthRepositoryImpl implements AuthRepository {
     final user = users.firstWhereOrNull(
         (element) => element.emailAddress == dto.emailAddress);
 
-    if (user != null) return const Left(MessageException('User already exists'));
+    if (user != null)
+      return const Left(MessageException('User already exists'));
 
     await _saveUsers(dto);
     return const Right('Signup successful');

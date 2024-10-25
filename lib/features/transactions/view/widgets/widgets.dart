@@ -1,2 +1,2 @@
-//GENERATED BARREL FILE 
-export 'transaction_tile.dart'; 
+//GENERATED BARREL FILE
+export 'transaction_tile.dart';
