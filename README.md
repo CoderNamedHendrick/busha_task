@@ -2,7 +2,7 @@
 
 ### ▶️ Demo Showcase
 
-<img src="submission/demo.gif" alt="Demo Showcase"  width="250" height="400" />
+<img src="submission/demo.gif" alt="Demo Showcase"/>
 
 ### 📚 Description
 
