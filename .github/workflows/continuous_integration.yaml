@@ -1,0 +1,48 @@
+name: Continuous integration pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-tests-and-upload-coverage-report:
+    runs-on: macOS-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: futureware-tech/simulator-action@v3
+        with:
+          mode: 'iPhone 14'
+
+      - name: Cache Flutter dependencies
+        uses: actions/cache@v1
+        with:
+          path: /opt/hostedtoolcache/flutter
+          key: ${{ runner.OS }}-flutter-install-cache-${{ env.flutter_version }}
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Format code
+        run: dart format . --set-exit-if-changed
+
+      - name: Lint analysis
+        run: flutter analyze --no-pub
+
+      - name: Run integration tests
+        run: flutter test integration_test --coverage
+
+      - name: Run unit tests
+        run: flutter test test --coverage
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ./coverage/lcov.info
