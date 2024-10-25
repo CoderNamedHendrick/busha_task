@@ -6,7 +6,6 @@ import 'busha_app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   if (defaultTargetPlatform == TargetPlatform.android) {
     const SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
