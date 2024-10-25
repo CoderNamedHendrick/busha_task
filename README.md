@@ -37,4 +37,4 @@ download any of the 2 apk files in the submission folder and install on your and
 ### 🥸 Author
 
 Sebastine
-Odeh [![Twitter Follow](https://img.shields.io/twitter/follow/mastersam_.svg?style=social)](https://twitter.com/H3ndrick_)
+Odeh [![Twitter Follow](https://img.shields.io/twitter/follow/H3ndrick_.svg?style=social)](https://twitter.com/H3ndrick_)
