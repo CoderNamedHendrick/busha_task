@@ -75,11 +75,12 @@ void main() {
       expect(container.read(loginViewModelProvider).uiState, UiState.idle);
     });
 
-    testWidgets('log in failure test', (tester) async {
-      when(() => mockAuthRepo.loginUser(const AuthDto(
-              emailAddress: 'johndoe@gmail.com', password: 'BushaTestTest')))
-          .thenAnswer(
-              (_) => Future.value(const Left(MessageException('User not found'))));
+    test('log in failure test', () async {
+      when(() => mockAuthRepo.loginUser(
+          const AuthDto(
+              emailAddress: 'johndoe@gmail.com',
+              password: 'BushaTestTest'))).thenAnswer(
+          (_) => Future.value(const Left(MessageException('User not found'))));
 
       expect(container.read(loginViewModelProvider).uiState, UiState.idle);
       expect(
@@ -107,10 +108,7 @@ void main() {
           fireImmediately: true);
 
       final currentState = container.read(loginViewModelProvider);
-
-      await tester.pumpWidget(const UnitTestApp());
       await container.read(loginViewModelProvider.notifier).login();
-      await tester.pumpAndSettle();
 
       verifyInOrder([
         () => listener(null, currentState.copyWith(uiState: UiState.idle)),
@@ -134,7 +132,6 @@ void main() {
       ]);
 
       expect(container.read(loginViewModelProvider).uiState, UiState.idle);
-    }, );
-
+    });
   });
 }

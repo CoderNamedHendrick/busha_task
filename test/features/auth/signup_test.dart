@@ -76,12 +76,12 @@ void main() {
       expect(currentState.uiState, UiState.idle, reason: 'reset state');
     });
 
-    testWidgets('sign up failure test', (tester) async {
+    test('sign up failure test', () async {
       when(() => mockAuthRepo.signupUser(
           const AuthDto(
               emailAddress: 'johndoe@gmail.com',
-              password: 'BushaTestTest'))).thenAnswer(
-          (_) => Future.value(const Left(MessageException('User already exists'))));
+              password: 'BushaTestTest'))).thenAnswer((_) =>
+          Future.value(const Left(MessageException('User already exists'))));
 
       expect(container.read(signupViewModelProvider).uiState, UiState.idle);
       expect(
@@ -109,10 +109,7 @@ void main() {
           fireImmediately: true);
 
       final currentState = container.read(signupViewModelProvider);
-
-      await tester.pumpWidget(const UnitTestApp());
       await container.read(signupViewModelProvider.notifier).signup();
-      await tester.pumpAndSettle();
 
       verifyInOrder([
         () => listener(null, currentState.copyWith(uiState: UiState.idle)),

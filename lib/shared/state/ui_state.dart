@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import '../../routing/routing.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -154,6 +155,10 @@ extension UiStateX<T extends BushaUiState<T>> on T {
   void displayError() async {
     if (uiState != UiState.error) return;
     assert(exception is! EmptyException, 'Please pass appropriate exception');
+
+    final isTest =
+        bool.tryParse(Platform.environment['FLUTTER_TEST'] ?? '') ?? false;
+    if (isTest) return;
 
     final context = BushaRouter.routeKey.currentContext!;
     final snackbar = SnackBar(

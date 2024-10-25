@@ -84,7 +84,7 @@ void main() {
       ]);
     });
 
-    testWidgets('fetch btc transactions failure test', (tester) async {
+    test('fetch btc transactions failure test', () async {
       when(() => mockTransactionRepo.fetchRecentTransactions())
           .thenAnswer((_) => Future.value(Left(ServerException.fromJson({
                 'message': 'Service Unavailable',
@@ -104,11 +104,9 @@ void main() {
 
       final currentState = container.read(transactionsViewModelProvider);
 
-      await tester.pumpWidget(const UnitTestApp());
       await container
           .read(transactionsViewModelProvider.notifier)
           .fetchRecentTransactions();
-      await tester.pumpAndSettle();
 
       verifyInOrder([
         () => listener(null, currentState.copyWith(uiState: UiState.idle)),
@@ -190,7 +188,7 @@ void main() {
       ]);
     });
 
-    testWidgets('fetch tezos transactions failure test', (tester) async {
+    test('fetch tezos transactions failure test', () async {
       when(() => mockTransactionRepo.fetchRecentTransactions())
           .thenAnswer((_) => Future.value(Left(ServerException.fromJson({
                 'message': 'Service Unavailable',
@@ -210,11 +208,9 @@ void main() {
 
       final currentState = container.read(transactionsViewModelProvider);
 
-      await tester.pumpWidget(const UnitTestApp());
       await container
           .read(transactionsViewModelProvider.notifier)
           .fetchRecentTransactions();
-      await tester.pumpAndSettle();
 
       verifyInOrder([
         () => listener(null, currentState.copyWith(uiState: UiState.idle)),
